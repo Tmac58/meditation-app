@@ -1,0 +1,40 @@
+.container {
+    left: 0;
+    line-height: 150px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 10%;
+    width: 100%;
+   
+}
+.container h1{
+    text-align: center;
+    font-size: 6rem;
+    padding: 20px;
+    margin: 15px;
+    z-index: 1;
+    font-family: 'Piedra', cursive;
+    color: beige;
+    
+
+}
+
+.container h3,h4 {
+    text-align: center;
+    font-size: 3rem;
+    padding: 20px;
+    margin:15px;
+    z-index: 1;
+    font-family: 'Piedra', cursive;
+    color:beige ;
+    
+}
+
+#myvideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
