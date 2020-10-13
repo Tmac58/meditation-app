@@ -1,0 +1,39 @@
+.communityHeading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.newPostCSS {
+    display: flex;
+}
+
+.newPostCSS img{
+    width: 100px;
+    height: 100px;
+}
+
+.PostImageCSS {
+    display: flex;
+    flex-direction: column;
+}
+
+.postMessageCSS {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    ;
+}
+
+.messageTextBox {
+    height: 100%;
+}
+
+.postButton {
+        background-color: #008CBA; 
+        color: white; 
+        border: 2px solid #008CBA;
+        
+      }
+
