@@ -1,24 +1,34 @@
-let token = "BQCfsvmP732YM9MsCakDTMxQHsawccuehgk2zM-TEOGRnXfS5hQYM_bAg0TXYBjEXM_tGuuw6_Xp-Sq5LJfOZcRUS8GIUA9waOJitVZ63FQaHFPyifjuLPHg3k77NMSS_p96i3Jzbrdob3ih2Yo7wzG6BLj1FSHOBqNCqKVSlXKc"
-
-// play selected playlist 
-function playPlaylist(uri) {
-    fetch(`https://api.spotify.com/v1/me/player/play`, {
-        method: "PUT",
-        headers: {
-            "Authorization": `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-            "context_uri": uri
-          })
-        })        
+    //TIMER
+    let timer = document.getElementById("timer") //this is a div that the timer will display in
+    
+    //sets timer on screen and starts countdown
+    function setTimer(minutes) {
+      timer.innerHTML =
+        minutes + ":" + 00
+      startTimer()
     }
-
-//pause track that is currently playing
-function pauseTrack() {
-    fetch(`https://api.spotify.com/v1/me/player/pause`, {
-        method: "PUT",
-        headers: {
-            "Authorization": `Bearer ${token}`,
-        },
-    })
-}
+    
+        
+    function startTimer() {
+      let presentTime = timer.innerHTML
+      let timeArray = presentTime.split(/[:]+/)
+      let m = timeArray[0]
+      var s = checkSecond((timeArray[1] - 1))
+      if (s == 59) {
+        m = m - 1
+      }  
+    
+      timer.innerHTML = m + ":" + s
+      let countdown = setTimeout(startTimer, 1000) //starts countdown
+    
+      if (m == 0 && s == 00) {
+        console.log('timer completed')
+        clearTimeout(countdown) //stops countdown when 0:00
+      } 
+    }
+    
+    function checkSecond(sec) {
+      if (sec < 10 && sec >= 0) { sec = "0" + sec } // add zero in front of numbers < 10
+      if (sec < 0) { sec = "59" } //resets to 59 seconds
+      return sec
+    }    
