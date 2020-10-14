@@ -58,7 +58,7 @@ function listAnimals() {
 //update animal image
 function displayAnimal(animal) {
   console.log(animal)
-  postImage.innerHTML = `<img src="images/${animal}.png"></img>`
+  imageChoice.innerHTML = `<img src="images/${animal}.png"></img>`
   showAnimals.innerHTML = ""
 
 }
@@ -66,16 +66,18 @@ function displayAnimal(animal) {
 
 //function to save post information from community page to Firebase
 function getInfo() {
+
   let messageTB = document.getElementById("messageTB")
   let image = document.getElementById("postImage").src
-  
   let postContent = messageTB.value
+
   savePost(name, image, postContent)
+  messageTB.value = messageTB.defaultValue
 }
 
-//function to save post to firestore - check this once firebase is up
+//function to save post to firestore
 function savePost(name, image, message) {
-  db.collection("posts").add({ //need to get name from firebase
+  db.collection("posts").add({ 
     name: name,
     image: image,
     message: message,
@@ -89,18 +91,17 @@ function savePost(name, image, message) {
     })
 }
 
-//update list of previous posts - check this once firebase is up
+//update list of previous posts 
 function listPreviousPosts() {
   previousPosts.innerHTML = ""
 
-  db.collection("posts").get().then((snapshot) => { //need to get name for posts when firestore is built
+  db.collection("posts").get().then((snapshot) => { 
     snapshot.forEach((doc) => {
       let post = doc.data()
       let postDetail =
-        `<div>
-            <div> <img src=${post.image}></img></div>
-            <div> ${post.name} </div>
-            <div> ${post.message} </div>
+        `<div class="postListPosts">
+            <div class="postListImage"> <img src=${post.image}></img></div>
+            <div class="postListPosting"> <b>${post.name}:</b> ${post.message} </div>
         </div>`
 
         previousPosts.insertAdjacentHTML("afterbegin", postDetail)
