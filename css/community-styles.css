@@ -5,24 +5,33 @@
 
 }
 
+.communityHeading h1 {
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
 .allPostsContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+
 }
 
 .newPostContainer {
     width: 100%;
-    margin: 10px;
 }
 
 .newPostCSS {
     display: flex;
+    margin: 10px;
+
 }
 
-.newPostCSS img{
+img{
     width: 100px;
     height: 100px;
 
@@ -50,17 +59,34 @@
         border: 2px solid #008CBA;
         
       }
-
-.postListPosts {
-    display: flex;
-    
+      
+.previousPostsContainer {
+    width: 100%;
+    margin-top: 25px;
 
 }
 
-/* .postListImage{
+
+.postListPosts {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: lightgray;
+    border-radius: 25px;
+    margin: 10px;
+
+}
+
+.postListImage{
+    margin: 10px;
 
 }
 
 .postListPosting {
+    margin: 10px;
+}
 
-} */
+
+@media (max-width: 600px) {
+/* set media queries */
+}

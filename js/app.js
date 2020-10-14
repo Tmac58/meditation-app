@@ -1,7 +1,7 @@
 //TIMER
 let timer = document.getElementById("timer") //this is a div that the timer will display in
 let nameTB = document.getElementById("nameTB") //this will be updated after name text box is added to page 1
-let name = "This is the Name variable" //update with nameTB.value once box is made
+let name = "Name" //update with nameTB.value once box is made
 let newPost = document.getElementById("newPost")
 let previousPosts = document.getElementById("previousPosts")
 let showAnimals = document.getElementById("showAnimals")
@@ -10,11 +10,14 @@ let userName = document.getElementById("userName") //community post user name
 
 
 //sets timer on screen and starts countdown
+
 function setTimer(minutes) {
   timer.innerHTML =
     minutes + ":" + 00
   startTimer()
 }
+
+// setTimer("5") this will call the timer to start - replace when building the page
 
 function startTimer() {
   let presentTime = timer.innerHTML
@@ -57,10 +60,9 @@ function listAnimals() {
 
 //update animal image
 function displayAnimal(animal) {
-  console.log(animal)
-  imageChoice.innerHTML = `<img src="images/${animal}.png"></img>`
+  imageChoice.innerHTML = `<img id="postImage" src="images/${animal}.png"></img>`
   showAnimals.innerHTML = ""
-
+ 
 }
 
 
@@ -77,7 +79,9 @@ function getInfo() {
 
 //function to save post to firestore
 function savePost(name, image, message) {
+  let date = Date() 
   db.collection("posts").add({ 
+    date: date,
     name: name,
     image: image,
     message: message,
@@ -95,19 +99,47 @@ function savePost(name, image, message) {
 function listPreviousPosts() {
   previousPosts.innerHTML = ""
 
-  db.collection("posts").get().then((snapshot) => { 
+  db.collection("posts").orderBy("date").get().then((snapshot) => { 
     snapshot.forEach((doc) => {
       let post = doc.data()
       let postDetail =
         `<div class="postListPosts">
-            <div class="postListImage"> <img src=${post.image}></img></div>
-            <div class="postListPosting"> <b>${post.name}:</b> ${post.message} </div>
+           <div class="postListImage"> <img src=${post.image}></img></div>
+           <div class="postListPosting"> <b>${post.name}:</b> ${post.message} </div>
         </div>`
-
+        
         previousPosts.insertAdjacentHTML("afterbegin", postDetail)
     })
     
   })
 }
 
+//post meditation information to Firestore
 
+function postMeditation(minutes, theme) {
+  let message = `meditated for ${minutes} minutes to the ${theme} sounds`
+
+  if (theme == "forest") {
+    var image = "images/forest.png"
+  } if (theme == "ocean") {
+    var image = "images/ocean.png"
+  } else {
+    var image = "images/rain.png"
+  }
+
+    db.collection("posts").add({ 
+      name: name,
+      image: image,
+      message: message,
+    })
+      .then(function (docRef) {
+        console.log("updated post to firestore")
+        listPreviousPosts() //will update list of previous posts
+      })
+      .catch(function (error) {
+        console.log("error loading to post")
+      })
+}
+// let minutes = "5"
+// let theme = "forest"
+// postmeditation(name, minutes, theme)

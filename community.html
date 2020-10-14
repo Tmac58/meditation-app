@@ -9,24 +9,25 @@
 
 </head>
 
-<body onload="listPreviousPosts()">
+<body onload="listPreviousPosts(); displayAnimal('turtle')">
+    <!-- <button onclick="postMeditation(5, 'forest')">post meditation info</button> -->
     <div id="communityContainer">
         <div class="communityHeading">
-            <h1>Peacefully All the Time Community</h1>
-            <a href="#meditation">return to meditation page</a></div>
+            <h1>The Peaceful Community</h1>
+            <a href="#secondpage">return to meditation page</a></div>
         </div>
 
         <div class="allPostsContainer">
             <div class="newPostContainer">
                 <div id="newPost" class="newPostCSS">
                     <div id="newPostImage" class="PostImageCSS">
-                        <div id="imageChoice"><img id="postImage" src="images/lion.png"></img></div>
+                        <div id="imageChoice"></div>
                         <div><a href=# onclick="listAnimals()">Change Image</a></div>
                     </div>
                     <div id="showAnimals"> </div>
 
                     <div id="newPostMain" class="postMessageCSS">
-                        <b id="userName"> </b>
+                        <!-- <b id="userName">`</b> -->
                         <textarea id="messageTB" class="messageTextBox" placeholder="share your thoughts here"></textarea>
                         <button class="postButton" onclick="getInfo()">share</button>
                     </div>
@@ -35,7 +36,7 @@
 
             </div>
 
-            <div id="previousPosts">
+            <div id="previousPosts" class="previousPostsContainer">
 
             </div>
 
