@@ -1,12 +1,13 @@
 //TIMER
 let timer = document.getElementById("timer") //this is a div that the timer will display in
 let nameTB = document.getElementById("nameTB") //this will be updated after name text box is added to page 1
-let name = "Name" //update with nameTB.value once box is made
+let name = "This is the Name variable" //update with nameTB.value once box is made
 let newPost = document.getElementById("newPost")
 let previousPosts = document.getElementById("previousPosts")
 let showAnimals = document.getElementById("showAnimals")
 let postImage = document.getElementById("postImage")
 let userName = document.getElementById("userName") //community post user name
+
 
 //sets timer on screen and starts countdown
 function setTimer(minutes) {
@@ -65,11 +66,12 @@ function displayAnimal(animal) {
 
 //function to save post information to Firebase when press post button
 function getInfo() {
-  let message = document.getElementById(messageTB)
-  let image = document.getElementById(postImage)
-  //do we need to add name in here
+  let messageTB = document.getElementById("messageTB")
+  let image = document.getElementById("postImage").src
+  console.log(image)
+  let postContent = messageTB.value
 
-  savePost(name, image, message)
+  savePost(name, image, postContent)
 }
 
 //function to save post to firestore - check this once firebase is up
@@ -101,8 +103,10 @@ function listPreviousPosts() {
             <div> ${post.name} </div>
             <div> ${post.message} </div>
         </div>`
+
+        previousPosts.insertAdjacentHTML("afterbegin", postDetail)
     })
-    previousPosts.insertAdjacentHTML("afterbegin", postDetail)
+    
   })
 }
 
