@@ -25,6 +25,7 @@
 .newPostCSS img{
     width: 100px;
     height: 100px;
+
 }
 
 .PostImageCSS {
@@ -56,10 +57,10 @@
 
 }
 
-.postListImage{
+/* .postListImage{
 
 }
 
 .postListPosting {
 
-}
+} */
