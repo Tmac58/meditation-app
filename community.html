@@ -48,7 +48,31 @@
 
     </div>
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB3KU_0HCzTLOPA2_F1Y2a-JIW1WSFYxDI",
+    authDomain: "mediation-app-9c413.firebaseapp.com",
+    databaseURL: "https://mediation-app-9c413.firebaseio.com",
+    projectId: "mediation-app-9c413",
+    storageBucket: "mediation-app-9c413.appspot.com",
+    messagingSenderId: "2918800709",
+    appId: "1:2918800709:web:d18171d47a13606314322c"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+ // initialize the firebase firestore database 
+ var db = firebase.firestore();
+
+</script>
     <script src="js/app.js"> </script>
 </body>
 
