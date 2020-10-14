@@ -64,13 +64,12 @@ function displayAnimal(animal) {
 }
 
 
-//function to save post information to Firebase when press post button
+//function to save post information from community page to Firebase
 function getInfo() {
   let messageTB = document.getElementById("messageTB")
   let image = document.getElementById("postImage").src
-  console.log(image)
+  
   let postContent = messageTB.value
-
   savePost(name, image, postContent)
 }
 
@@ -99,7 +98,7 @@ function listPreviousPosts() {
       let post = doc.data()
       let postDetail =
         `<div>
-            <div> ${post.image} </div>
+            <div> <img src=${post.image}></img></div>
             <div> ${post.name} </div>
             <div> ${post.message} </div>
         </div>`
