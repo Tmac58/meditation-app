@@ -2,11 +2,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 600px;
+    margin: auto;
+    text-align: center;
+    font-family: Tahoma;
+       
+    
 }
 
 .communityHeading h1 {
     margin-top: 25px;
     margin-bottom: 5px;
+    font-family: 'Piedra', cursive;
+    
+}
+
+.communityHeading p {
+    color: gray;
 }
 
 .allPostsContainer {
@@ -17,16 +29,19 @@
     margin-bottom: 20px;
     margin-right: 50px;
     margin-left: 50px;
-
+   
 }
 
 .newPostContainer {
     width: 100%;
+    background-color: lightgray;
 }
 
 .newPostCSS {
     display: flex;
     margin: 10px;
+    border-style: solid 1px;
+
 
 }
 
@@ -36,9 +51,20 @@ img{
 
 }
 
+.animalThumbnail {
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.postListImage {
+    border-radius: 50%;
+}
+
 .PostImageCSS {
     display: flex;
     flex-direction: column;
+    margin-right: 10px;
 }
 
 .postMessageCSS {
@@ -50,21 +76,38 @@ img{
 
 .messageTextBox {
     height: 100%;
+    border: none;
+    font-family: Tahoma;
 }
 
 .postButton {
         background-color: #008CBA; 
         color: white; 
         border: 2px solid #008CBA;
+        float: right;
+        margin: 10px;
+        
         
       }
       
+.latestPosts{
+    font-family: 'Piedra', cursive;
+    text-align: left;
+    width: 100%;
+}
+
+hr.rounded {
+    border-top: 3px dotted #bbb;
+  }
+
 .previousPostsContainer {
     width: 100%;
-    margin-top: 25px;
 
 }
 
+.previousPostsContainer img {
+    border-radius: 50%;
+}
 
 .postListPosts {
     display: flex;
@@ -83,13 +126,27 @@ img{
 
 .postListPosting {
     margin: 10px;
+    margin-top: 30px;
 }
 
-
-@media (min-width: 600px) {
-    .communityContainer {
-        width: 600px
-
+@media (max-width: 425px) {
+    .allPostsContainer {
+        width: 400px;
+        margin: 0px;
+   
     }
+
+    .communityHeading {
+        width: 400px;
+    }
+     
+ }
+
+@media only screen and (min-width: 800px) {
+   .allPostsContainer {
+       width: 800px;
+       margin: auto;
+       margin-right: auto;
+   }
     
 }
