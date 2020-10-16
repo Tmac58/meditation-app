@@ -5,8 +5,8 @@
 
 **Forest**
  
-![   ](https://github.com/kjdonoghue/meditation-app/images/forest.png)
- 
+![   ](https://github.com/kjdonoghue/meditation-app/tree/master/images/forest.png)
+
 **Lion**
 
 ![   ](meditation-app\images\lion.png)
