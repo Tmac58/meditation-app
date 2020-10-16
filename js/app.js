@@ -7,44 +7,45 @@ let previousPosts = document.getElementById("previousPosts")
 let showAnimals = document.getElementById("showAnimals")
 let postImage = document.getElementById("postImage")
 let userName = document.getElementById("userName") //community post user name
+let joinButton = document.getElementById("joinButton")
 
 
-//sets timer on screen and starts countdown
+// //sets timer on screen and starts countdown
 
-function setTimer(minutes) {
-  timer.innerHTML =
-    minutes + ":" + 00
-  startTimer()
-}
+// function setTimer(minutes) {
+//   timer.innerHTML =
+//     minutes + ":" + 00
+//   startTimer()
+// }
 
-// setTimer("5") this will call the timer to start - replace when building the page
+// // setTimer("5") this will call the timer to start - replace when building the page
 
-function startTimer() {
-  let presentTime = timer.innerHTML
-  let timeArray = presentTime.split(/[:]+/)
-  let m = timeArray[0]
-  var s = checkSecond((timeArray[1] - 1))
-  if (s == 59) {
-    m = m - 1
-  }
+// function startTimer() {
+//   let presentTime = timer.innerHTML
+//   let timeArray = presentTime.split(/[:]+/)
+//   let m = timeArray[0]
+//   var s = checkSecond((timeArray[1] - 1))
+//   if (s == 59) {
+//     m = m - 1
+//   }
 
-  timer.innerHTML = m + ":" + s
-  let countdown = setTimeout(startTimer, 1000) //starts countdown
+//   timer.innerHTML = m + ":" + s
+//   let countdown = setTimeout(startTimer, 1000) //starts countdown
 
-  if (m == 0 && s == 00) {
-    console.log('timer completed')
-    clearTimeout(countdown) //stops countdown when 0:00
-  }
-}
+//   if (m == 0 && s == 00) {
+//     console.log('timer completed')
+//     clearTimeout(countdown) //stops countdown when 0:00
+//   }
+// }
 
-function checkSecond(sec) {
-  if (sec < 10 && sec >= 0) { sec = "0" + sec } // add zero in front of numbers < 10
-  if (sec < 0) { sec = "59" } //resets to 59 seconds
-  return sec
-}
+// function checkSecond(sec) {
+//   if (sec < 10 && sec >= 0) { sec = "0" + sec } // add zero in front of numbers < 10
+//   if (sec < 0) { sec = "59" } //resets to 59 seconds
+//   return sec
+// }
 
 // insert user name into new post on community page
-userName.innerHTML = name
+// userName.innerHTML = name
 
 
 //list images of spirit animal on community post
@@ -73,16 +74,16 @@ function getInfo() {
   let image = document.getElementById("postImage").src
   let postContent = messageTB.value
 
-  savePost(name, image, postContent)
+  savePost(image, postContent)
   messageTB.value = messageTB.defaultValue
 }
 
 //function to save post to firestore
-function savePost(name, image, message) {
+function savePost(image, message) {
   let date = Date() 
   db.collection("posts").add({ 
     date: date,
-    name: name,
+    name: "Guest",
     image: image,
     message: message,
   })
@@ -105,7 +106,7 @@ function listPreviousPosts() {
       let postDetail =
         `<div class="postListPosts">
            <div class="postListImage"> <img src=${post.image}></img></div>
-           <div class="postListPosting"> <b>${post.name}:</b> ${post.message} </div>
+           <div class="postListPosting"> ${post.name}: ${post.message} </div>
         </div>`
         
         previousPosts.insertAdjacentHTML("afterbegin", postDetail)
@@ -116,19 +117,24 @@ function listPreviousPosts() {
 
 //post meditation information to Firestore
 
-function postMeditation(minutes, theme) {
-  let message = `meditated for ${minutes} minutes to the ${theme} sounds`
+function postMeditation(theme) {
+  let message = `just started meditating to the sounds of the ${theme}`
+  let date = Date() 
 
-  if (theme == "forest") {
-    var image = "images/forest.png"
-  } if (theme == "ocean") {
-    var image = "images/ocean.png"
+  console.log(theme)
+
+  if (theme == "Rain") {
+    var image = "images/Rain.png"
+  } else if (theme == "Ocean") {
+    var image = "images/Ocean.png"
   } else {
-    var image = "images/rain.png"
+    var image = "images/Forest.png"
   }
 
-    db.collection("posts").add({ 
-      name: name,
+    db.collection("posts").add({
+      
+      date: date, 
+      name: "A community member",
       image: image,
       message: message,
     })
@@ -143,3 +149,107 @@ function postMeditation(minutes, theme) {
 // let minutes = "5"
 // let theme = "forest"
 // postmeditation(name, minutes, theme)
+
+function enterSite() {
+  location.href = "secondpage/secondpage.html"
+}
+
+
+
+const app = () => {
+
+  // Get the elements
+  const song = document.querySelector(".song");
+  const play = document.querySelector(".play");
+  const outline = document.querySelector(".moving-outline circle");
+  const video = document.querySelector(".vid-container video");
+
+  // Sounds
+  const sounds = document.querySelectorAll(".sound-picker button");
+
+  // Time Display
+  const timeDisplay = document.querySelector(".time-display");
+  const timeSelect = document.querySelectorAll(".time-select button");
+
+  // Get the length of the outline
+  const outlineLength = outline.getTotalLength();
+
+  // Duration
+  let fakeDuration = 600;
+
+  outline.style.strokeDasharray = outlineLength;
+  outline.style.strokeDashoffset = outlineLength;
+
+  // Pick different sounds
+  sounds.forEach(sound => {
+      sound.addEventListener("click", function () {
+          song.src = this.getAttribute("data-sound");
+          // video.src = this.getAttribute("data-video");
+          
+          let p = this.firstElementChild.alt
+          console.log(p)
+          if (p == "rain") {
+            var theme = "Rain"
+          } else if (p == "Ocean") {
+            var theme = "Ocean"
+          } else {
+            var theme = "Forest"
+          }
+          console.log(theme)
+
+          checkPlaying(song);
+          postMeditation(theme)
+      });
+  });
+
+  // Play sound
+  play.addEventListener("click", () => {
+      checkPlaying(song);
+  });
+
+  // Select sound
+  timeSelect.forEach(option => {
+      option.addEventListener('click', function () {
+          fakeDuration = this.getAttribute("data-time");
+          timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(fakeDuration % 60)}`;
+      })
+  });
+
+
+  // Function for stop and play sound
+  const checkPlaying = song => {
+      if (song.paused) {
+          song.play();
+          // video.play();
+          play.src = "./svg/pause.svg";
+      } else {
+          song.pause();
+          // video.pause();
+          play.src = "./svg/play.svg";
+      }
+  }
+
+  // We can animate the circle
+  song.ontimeupdate = () => {
+      let currentTime = song.currentTime;
+      let elapsed = fakeDuration - currentTime;
+      let seconds = Math.floor(elapsed % 60);
+      let minutes = Math.floor(elapsed / 60);
+
+      // Animate the circle
+      let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
+      outline.style.strokeDashoffset = progress;
+
+      // Animate the text
+      timeDisplay.textContent = `${minutes}:${seconds}`;
+
+      if (currentTime >= fakeDuration) {
+          song.pause();
+          song.currentTime = 0;
+          play.src = "./svg/play.svg";
+          video.pause;
+      }
+  }
+};
+
+app();
