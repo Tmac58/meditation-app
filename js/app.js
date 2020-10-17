@@ -1,4 +1,3 @@
-//TIMER
 let newPost = document.getElementById("newPost")
 let previousPosts = document.getElementById("previousPosts")
 let showAnimals = document.getElementById("showAnimals")
