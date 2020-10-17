@@ -1,51 +1,9 @@
 //TIMER
-let timer = document.getElementById("timer") //this is a div that the timer will display in
-let nameTB = document.getElementById("nameTB") //this will be updated after name text box is added to page 1
-let name = "Name" //update with nameTB.value once box is made
 let newPost = document.getElementById("newPost")
 let previousPosts = document.getElementById("previousPosts")
 let showAnimals = document.getElementById("showAnimals")
 let postImage = document.getElementById("postImage")
-let userName = document.getElementById("userName") //community post user name
 let joinButton = document.getElementById("joinButton")
-
-
-// //sets timer on screen and starts countdown
-
-// function setTimer(minutes) {
-//   timer.innerHTML =
-//     minutes + ":" + 00
-//   startTimer()
-// }
-
-// // setTimer("5") this will call the timer to start - replace when building the page
-
-// function startTimer() {
-//   let presentTime = timer.innerHTML
-//   let timeArray = presentTime.split(/[:]+/)
-//   let m = timeArray[0]
-//   var s = checkSecond((timeArray[1] - 1))
-//   if (s == 59) {
-//     m = m - 1
-//   }
-
-//   timer.innerHTML = m + ":" + s
-//   let countdown = setTimeout(startTimer, 1000) //starts countdown
-
-//   if (m == 0 && s == 00) {
-//     console.log('timer completed')
-//     clearTimeout(countdown) //stops countdown when 0:00
-//   }
-// }
-
-// function checkSecond(sec) {
-//   if (sec < 10 && sec >= 0) { sec = "0" + sec } // add zero in front of numbers < 10
-//   if (sec < 0) { sec = "59" } //resets to 59 seconds
-//   return sec
-// }
-
-// insert user name into new post on community page
-// userName.innerHTML = name
 
 
 //list images of spirit animal on community post
@@ -65,7 +23,6 @@ function displayAnimal(animal) {
   showAnimals.innerHTML = ""
  
 }
-
 
 //function to save post information from community page to Firebase
 function getInfo() {
@@ -121,8 +78,6 @@ function postMeditation(theme) {
   let message = `just started meditating to the sounds of the ${theme}`
   let date = Date() 
 
-  console.log(theme)
-
   if (theme == "Rain") {
     var image = "images/Rain.png"
   } else if (theme == "Ocean") {
@@ -146,14 +101,10 @@ function postMeditation(theme) {
         console.log("error loading to post")
       })
 }
-// let minutes = "5"
-// let theme = "forest"
-// postmeditation(name, minutes, theme)
 
 function enterSite() {
-  location.href = "secondpage/secondpage.html"
+  location.href = "meditation.html"
 }
-
 
 
 const app = () => {
@@ -184,10 +135,8 @@ const app = () => {
   sounds.forEach(sound => {
       sound.addEventListener("click", function () {
           song.src = this.getAttribute("data-sound");
-          // video.src = this.getAttribute("data-video");
           
           let p = this.firstElementChild.alt
-          console.log(p)
           if (p == "rain") {
             var theme = "Rain"
           } else if (p == "Ocean") {
@@ -195,7 +144,6 @@ const app = () => {
           } else {
             var theme = "Forest"
           }
-          console.log(theme)
 
           checkPlaying(song);
           postMeditation(theme)
@@ -220,12 +168,10 @@ const app = () => {
   const checkPlaying = song => {
       if (song.paused) {
           song.play();
-          // video.play();
-          play.src = "./svg/pause.svg";
+          play.src = "svg/pause.svg";
       } else {
           song.pause();
-          // video.pause();
-          play.src = "./svg/play.svg";
+          play.src = "svg/play.svg";
       }
   }
 
@@ -246,8 +192,7 @@ const app = () => {
       if (currentTime >= fakeDuration) {
           song.pause();
           song.currentTime = 0;
-          play.src = "./svg/play.svg";
-          video.pause;
+          play.src = "svg/play.svg";
       }
   }
 };
