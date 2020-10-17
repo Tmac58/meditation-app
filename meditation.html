@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="css/meditation-styles.css" />
+    <title>Meditation App</title>
+  </head>
+  <body>
+          <section class="wrapper">
+      
+    <h1 class="sentence">
+      I am &nbsp 
+        <div class="verticalFlip">
+          <span>Loved.</span>
+          <span>Safe.</span>
+          <span>Supported.</span>
+        </div>
+        <h4>To begin, please choose a time and sound. Then, click the play button to begin your meditation practice.</h4>
+    </h1>
+     
+      
+    </section>
+
+  </section>
+    
+
+      <div class="app">
+        <div class="time-select">
+          <button data-time="30">10 Minutes </button>
+          <button data-time="1200" class="medium-mins">20 Minutes</button>
+          <button data-time="1800" class="long-mins">30 Minutes</button>
+        </div>
+        <div class="player-container">
+            <audio class="song">
+                <source src="./sounds/rain.mp3" />
+              </audio>
+              <img src="./svg/play.svg" class="play"></img>
+              <svg class="track-outline" width="453" height="453" viewBox="0 0 453 453" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
+                <circle cx="226.5" cy="226.5" r="216.5" stroke="white" stroke-width="20"/> -->
+                </svg>
+              <svg class="moving-outline" width="453" height="453" viewBox="0 0 453 453" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="226.5" cy="226.5" r="216.5" stroke="#018EBA" stroke-width="20"/>
+                </svg>
+              <img src="./svg/replay.svg" class="replay"></img>
+            
+                <h3 class="time-display">0:00</h3>      
+      </div>
+      <div class="sound-picker">
+        <button data-sound="sounds/rain.mp3">
+        <img src="./svg/Rain.png" alt="rain">
+        </button>
+        <button data-sound="sounds/beach.mp3">
+        <img src="./svg/Ocean.png" alt="Ocean"></button>
+        <button data-sound="sounds/forest.mp3">
+        <img src="./svg/Leaf 2.png">
+        </button>
+      </div>
+    </div>
+    
+    <div class="linkToCommunity"> <a href="community.html">Visit our Community Page</a></div>
+    <div class="linkToCommunity"> <a href="index.html">Home</a></div>
+    <!-- <a href=""></a> <button>Leave us a Comment</button> -->
+    
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+          apiKey: "AIzaSyB3KU_0HCzTLOPA2_F1Y2a-JIW1WSFYxDI",
+          authDomain: "mediation-app-9c413.firebaseapp.com",
+          databaseURL: "https://mediation-app-9c413.firebaseio.com",
+          projectId: "mediation-app-9c413",
+          storageBucket: "mediation-app-9c413.appspot.com",
+          messagingSenderId: "2918800709",
+          appId: "1:2918800709:web:d18171d47a13606314322c"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // initialize the firebase firestore database 
+      var db = firebase.firestore();
+
+  </script>
+
+    <!-- <script src="app2.js"></script> -->
+    <script src="js/app.js"> </script>
+  </body>
+</html>
