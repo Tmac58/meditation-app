@@ -1,3 +1,4 @@
+/* Home Page CSS */
 .container {
     left: 0;
     line-height: 150px;
@@ -6,8 +7,8 @@
     text-align: center;
     top: 10%;
     width: 100%;
-   
 }
+
 .container h1{
     text-align: center;
     font-size: 6rem;
@@ -16,8 +17,6 @@
     z-index: 1;
     font-family: 'Piedra', cursive;
     color: beige;
-    
-
 }
 
 .container h3,h4 {
@@ -28,11 +27,10 @@
     z-index: 1;
     font-family: 'Piedra', cursive;
     color:beige ;
-    
 }
 
 .loginBox {
-    background-color: rgb(134, 170, 206);
+    background-color: white;
     width: 350px;
     height: 200px; 
     line-height: normal;
@@ -49,7 +47,6 @@
     margin: 10px;
     color: white;
     background-color: slategray;
-
 }
 
 
@@ -60,3 +57,6 @@
     min-width: 100%;
     min-height: 100%;
 }
+
+
+

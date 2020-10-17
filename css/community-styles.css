@@ -5,16 +5,13 @@
     width: 600px;
     margin: auto;
     text-align: center;
-    font-family: Tahoma;
-       
-    
+    font-family: Tahoma;  
 }
 
 .communityHeading h1 {
     margin-top: 25px;
     margin-bottom: 5px;
     font-family: 'Piedra', cursive;
-    
 }
 
 .communityHeading p {
@@ -28,8 +25,7 @@
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: 50px;
-    margin-left: 50px;
-   
+    margin-left: 50px;  
 }
 
 .newPostContainer {
@@ -41,8 +37,6 @@
     display: flex;
     margin: 10px;
     border-style: solid 1px;
-
-
 }
 
 img{
@@ -86,8 +80,6 @@ img{
         border: 2px solid #008CBA;
         float: right;
         margin: 10px;
-        
-        
       }
       
 .latestPosts{
@@ -102,7 +94,6 @@ hr.rounded {
 
 .previousPostsContainer {
     width: 100%;
-
 }
 
 .previousPostsContainer img {
@@ -121,7 +112,6 @@ hr.rounded {
 
 .postListImage{
     margin: 10px;
-
 }
 
 .postListPosting {
@@ -133,13 +123,11 @@ hr.rounded {
     .allPostsContainer {
         width: 400px;
         margin: 0px;
-   
     }
 
     .communityHeading {
         width: 400px;
     }
-     
  }
 
 @media only screen and (min-width: 800px) {
@@ -148,5 +136,4 @@ hr.rounded {
        margin: auto;
        margin-right: auto;
    }
-    
 }
